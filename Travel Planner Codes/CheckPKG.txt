@@ -1,0 +1,213 @@
+package travel.management.system;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class AddCustomer extends JFrame implements ActionListener {
+    JTextField t1, t2, t3, t4, t7;
+    JRadioButton r1, r2;
+    JButton b1, b2;
+    JButton[] buttons = new JButton[12]; // Updated array length
+    String username;
+
+    
+    
+    AddCustomer() {
+        setBounds(400, 150, 800, 600);
+        getContentPane().setBackground(new Color(6, 7, 15));
+        setLayout(null);
+
+        // Bold Text
+        JLabel boldLabel = new JLabel("Add Customer Details");
+        boldLabel.setBounds(430, 170, 500, 30); // Moved right by 200 and down by 50
+        boldLabel.setForeground(Color.WHITE);
+        boldLabel.setFont(new Font("Poppins", Font.BOLD, 30));
+        add(boldLabel);
+
+        // Normal Text
+        JLabel normalLabel = new JLabel("Please enter the customer details below:");
+        normalLabel.setBounds(430, 210, 400, 25); // Moved right by 200 and down by 50
+        normalLabel.setForeground(Color.WHITE);
+        normalLabel.setFont(new Font("Poppins", Font.PLAIN, 15));
+        add(normalLabel);
+
+        createLabel("Username:", 430, 270, 150, 25, 15, Color.WHITE); // Moved right by 200 and down by 50
+        t1 = createTextField(630, 270, 400, 35); // Moved right by 200 and down by 50
+
+        createLabel("Full Name:", 430, 330, 150, 25, 15, Color.WHITE); // Moved right by 200 and down by 50
+        t2 = createTextField(630, 330, 400, 35); // Moved right by 200 and down by 50
+
+        createLabel("Phone Number:", 430, 390, 150, 25, 15, Color.WHITE); // Moved right by 200 and down by 50
+        t3 = createTextField(630, 390, 400, 35); // Moved right by 200 and down by 50
+
+        createLabel("Gender:", 430, 450, 150, 25, 15, Color.WHITE); // Moved right by 200 and down by 50
+        r1 = createRadioButton("Male", 630, 450, 70, 25); // Moved right by 200 and down by 50
+        r2 = createRadioButton("Female", 710, 450, 150, 25); // Moved right by 200 and down by 50
+
+        createLabel("Country:", 430, 510, 150, 25, 15, Color.WHITE); // Moved right by 200 and down by 50
+        t4 = createTextField(630, 510, 400, 35); // Moved right by 200 and down by 50
+
+        createLabel("Email:", 430, 570, 400, 35, 15, Color.WHITE); // Moved right by 200 and down by 50
+        t7 = createTextField(630, 570, 400, 35); // Moved right by 200 and down by 50
+
+        b1 = createButton("ADD", new Color(66, 77, 158), Color.WHITE, 630, 620, 156, 50); // Moved right by 200 and down by 100
+        b2 = createButton("BACK", new Color(66, 77, 158), Color.WHITE, 790, 620, 156, 50); // Moved right by 200 and down by 100
+
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+
+        setVisible(true);
+    
+        
+        
+        //////Susith Deshan Alwis
+        this.username = username;
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setLayout(null);
+
+        // Panel 1
+        JPanel p1 = new JPanel();
+        p1.setBounds(0, 0, 1950, 65);
+        p1.setBackground(new Color(33, 33, 33));
+        p1.setLayout(null);
+        add(p1);
+
+        // Panel 2
+        JPanel p2 = new JPanel();
+        p2.setBounds(0, 65, 300, 1000);
+        p2.setBackground(new Color(33, 33, 33));
+        p2.setLayout(new GridLayout(12, 1, 0, 10)); // Updated grid layout
+        add(p2);
+
+        // Buttons
+        String[] buttonLabels = {"Add Personal Details", "View Personal Details", "Check Package",
+                "Book Package", "View Package", "Book Hotels", "View Booked Hotel", "Payment",};
+
+        for (int i = 0; i < buttonLabels.length; i++) {
+            buttons[i] = new JButton(buttonLabels[i]);
+            buttons[i].setBackground(new Color(33, 33, 33));
+            buttons[i].setForeground(Color.WHITE);
+            buttons[i].setFont(new Font("Tahoma", Font.PLAIN, 16));
+            buttons[i].setPreferredSize(new Dimension(200, 25));
+            buttons[i].setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+            buttons[i].addActionListener(this);
+            buttons[i].setBackground(new Color(66, 77, 158));
+            p2.add(buttons[i]);
+        }
+
+        // Background Image
+        /*mageIcon backgroundIcon = new ImageIcon(ClassLoader.getSystemResource("travel/management/system/icons/home.jpg"));
+        Image backgroundImage = backgroundIcon.getImage().getScaledInstance(1950, 1000, Image.SCALE_DEFAULT);
+        JLabel backgroundLabel = new JLabel(new ImageIcon(backgroundImage));
+        backgroundLabel.setBounds(0, 0, 1950, 1000);
+        add(backgroundLabel);*/
+
+        // Title Label
+        /*JLabel titleLabel = new JLabel("TRAVEL & TOUR MANAGEMENT");
+        titleLabel.setBounds(600, 100, 1000, 70);
+        titleLabel.setForeground(Color.WHITE);
+        titleLabel.setFont(new Font("Tahoma", Font.PLAIN, 60));
+        backgroundLabel.add(titleLabel);*/
+    }
+
+    private void createLabel(String text, int x, int y, int width, int height, int fontSize, Color color) {
+        JLabel label = new JLabel(text);
+        label.setBounds(x, y, width, height);
+        label.setForeground(color);
+        label.setFont(new Font("Poppins", Font.PLAIN, fontSize));
+        add(label);
+    }
+
+    private JTextField createTextField(int x, int y, int width, int height) {
+        JTextField textField = new JTextField();
+        textField.setBounds(x, y, width, height);
+        textField.setBorder(null); // Remove the border
+        textField.setBackground(new Color(28, 30, 50)); // Set background color
+        textField.setForeground(Color.WHITE);
+        add(textField);
+        return textField;
+    }
+
+    private JRadioButton createRadioButton(String text, int x, int y, int width, int height) {
+        JRadioButton radioButton = new JRadioButton(text);
+        radioButton.setBounds(x, y, width, height);
+        radioButton.setBackground(new Color(33, 33, 33));
+        radioButton.setForeground(Color.WHITE);
+        radioButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        add(radioButton);
+        return radioButton;
+    }
+
+    private JButton createButton(String text, Color background, Color foreground, int x, int y, int width, int height) {
+        JButton button = new JButton(text);
+        button.setBackground(background);
+        button.setForeground(foreground);
+        button.setBounds(x, y, width, height);
+        button.setBorderPainted(false); // Remove the border
+        add(button);
+        return button;
+    }
+
+    public void actionPerformed(ActionEvent ae) {
+        if (ae.getSource() == b1) {
+            // Add customer details logic
+            // ...
+            JOptionPane.showMessageDialog(null, "Customer Details Added !");
+            this.setVisible(false);
+        } else if (ae.getSource() == b2) {
+            this.setVisible(false);
+        }
+        
+        JButton sourceButton = (JButton) ae.getSource();
+
+        switch (sourceButton.getText()) {
+            case "Add Personal Details":
+                new AddCustomer().setVisible(true);
+                break;
+            case "View Personal Details":
+                new ViewCustomer(username).setVisible(true);
+                break;
+            case "Check Package":
+                new CheckPackage().setVisible(true);
+                break;
+            case "Book Package":
+                new BookPackage(username).setVisible(true);
+                break;
+            case "View Package":
+                new ViewPackage(username).setVisible(true);
+                break;
+            case "Book Hotels":
+                new BookHotel(username).setVisible(true);
+                break;
+            case "View Booked Hotel":
+                new ViewBookedHotel(username).setVisible(true);
+                break;
+            case "About":
+                new About().setVisible(true);
+                break;
+            case "Payment":
+                new Payment().setVisible(true);
+                break;
+            case "Calculator":
+                try {
+                    Runtime.getRuntime().exec("calc.exe");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "NotePad":
+                try {
+                    Runtime.getRuntime().exec("notepad.exe");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                break;
+        }
+    }
+
+    public static void main(String[] args) {
+        new AddCustomer();
+    }
+}
