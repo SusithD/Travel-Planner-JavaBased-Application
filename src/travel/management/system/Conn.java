@@ -47,7 +47,7 @@ public class Conn
         {  
             Class.forName("com.mysql.cj.jdbc.Driver");  
             System.out.println("Driver Loaded");
-            c = DriverManager.getConnection("jdbc:mysql://localhost:3307/tms", "root", "123456789"); 
+            c = DriverManager.getConnection("jdbc:mysql://localhost:3307/tms", "username", "password"); 
             System.out.println("Connection Established");
             s = c.createStatement();  
             
